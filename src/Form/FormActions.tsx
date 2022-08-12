@@ -1,28 +1,22 @@
-import { Box, Button, Code } from "@chakra-ui/react";
+import { Box, Code } from "@chakra-ui/react";
 import { useFormState } from "./useFormState";
 
 export const FormActions: React.FC = () => {
   const { formValues } = useFormState();
 
-  const onClick = () => {
-    // サーバーへの送信
-  };
-
   return (
-    <>
-      <Box
+    <pre
+      style={{
+        width: "100%",
+      }}
+    >
+      <Code
         sx={{
-          display: "flex",
-          justifyContent: "flex-end",
+          width: "100%",
         }}
       >
-        <Button colorScheme="red" onClick={onClick}>
-          Submit
-        </Button>
-      </Box>
-      <Box>
-        <Code>{JSON.stringify(formValues, null, 2)}</Code>
-      </Box>
-    </>
+        {JSON.stringify(formValues, null, 2)}
+      </Code>
+    </pre>
   );
 };

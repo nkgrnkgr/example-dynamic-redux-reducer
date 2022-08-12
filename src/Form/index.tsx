@@ -1,10 +1,10 @@
 import {
   Box,
   Button,
-  Divider,
   Flex,
   Heading,
   Select,
+  SimpleGrid,
   Wrap,
   WrapItem,
 } from "@chakra-ui/react";
@@ -28,57 +28,61 @@ export const Form: React.FC = () => {
           Forms
         </Heading>
       </Box>
-      <Box
-        sx={{
-          mb: "12px",
-        }}
-      >
-        <FormActions />
-      </Box>
-
-      <Divider
-        sx={{
-          mt: "48px",
-          mb: "48px",
-        }}
-      />
-
-      <Box
-        sx={{
-          mb: "12px",
-        }}
-      >
-        <Flex>
-          <Box sx={{ w: "100%", mr: "12px" }}>
-            <Select
-              defaultValue={selectedFormName}
-              onChange={(e) =>
-                selectFormName(e.currentTarget.value as FormName)
-              }
+      <Flex>
+        <Box
+          sx={{
+            flex: 1,
+            mr: "12px",
+          }}
+        >
+          <Box
+            sx={{
+              display: "flex",
+              mb: "12px",
+            }}
+          >
+            <Box
+              sx={{
+                width: "100%",
+                mr: "12px",
+              }}
             >
-              <option value="text">text</option>
-              <option value="checkbox">checkbox</option>
-            </Select>
+              <Select
+                defaultValue={selectedFormName}
+                onChange={(e) =>
+                  selectFormName(e.currentTarget.value as FormName)
+                }
+              >
+                <option value="text">text</option>
+                <option value="checkbox">checkbox</option>
+              </Select>
+            </Box>
+            <Button colorScheme="cyan" onClick={addForm}>
+              Add Form
+            </Button>
           </Box>
-          <Button colorScheme="cyan" onClick={addForm}>
-            Add Form
-          </Button>
-        </Flex>
-      </Box>
-
-      <Box
-        sx={{
-          mb: "12px",
-        }}
-      >
-        <Wrap spacing="12px">
-          {formSchemas.map(({ formId, formName }) => (
-            <WrapItem w="240px" key={formId}>
-              <FormSwitcher formId={formId} formName={formName} />
-            </WrapItem>
-          ))}
-        </Wrap>
-      </Box>
+          <Box
+            sx={{
+              mb: "12px",
+            }}
+          >
+            <Wrap spacing="12px">
+              {formSchemas.map(({ formId, formName }) => (
+                <WrapItem w="240px" key={formId}>
+                  <FormSwitcher formId={formId} formName={formName} />
+                </WrapItem>
+              ))}
+            </Wrap>
+          </Box>
+        </Box>
+        <Box
+          sx={{
+            flex: 1,
+          }}
+        >
+          <FormActions />
+        </Box>
+      </Flex>
     </>
   );
 };
