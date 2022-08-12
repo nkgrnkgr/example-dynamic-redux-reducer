@@ -8,37 +8,14 @@ import {
   Wrap,
   WrapItem,
 } from "@chakra-ui/react";
-import { useState } from "react";
-import { FormName } from "../App";
 import { FormActions } from "./FormActions";
-import { Switcher } from "./Switcher";
-
-type FormSchema = {
-  formId: number;
-  formName: FormName;
-};
+import { FormSwitcher } from "./FormSwitcher";
+import { FormName } from "./modules/types";
+import { useFormState } from "./useFormState";
 
 export const Form: React.FC = () => {
-  const [formSchemas, setFormSchemas] = useState<FormSchema[]>([
-    {
-      formId: 1,
-      formName: "text",
-    },
-  ]);
-  const [selectedValue, setSelectedValue] = useState<FormName>("checkbox");
-
-  const add = () => {
-    const { formId } = formSchemas.sort((a, b) => a.formId - b.formId)[
-      formSchemas.length - 1
-    ];
-    setFormSchemas([
-      ...formSchemas,
-      {
-        formId: formId + 1,
-        formName: selectedValue,
-      },
-    ]);
-  };
+  const { addForm, selectFormName, selectedFormName, formSchemas } =
+    useFormState();
 
   return (
     <>
@@ -73,15 +50,13 @@ export const Form: React.FC = () => {
       >
         <Flex>
           <Select
-            defaultValue={selectedValue}
-            onChange={(e) =>
-              setSelectedValue(e.currentTarget.value as FormName)
-            }
+            defaultValue={selectedFormName}
+            onChange={(e) => selectFormName(e.currentTarget.value as FormName)}
           >
             <option value="text">text</option>
             <option value="checkbox">checkbox</option>
           </Select>
-          <Button colorScheme="cyan" onClick={add}>
+          <Button colorScheme="cyan" onClick={addForm}>
             Add Form
           </Button>
         </Flex>
@@ -95,7 +70,7 @@ export const Form: React.FC = () => {
         <Wrap spacing="12px">
           {formSchemas.map(({ formId, formName }) => (
             <WrapItem w="240px" key={formId}>
-              <Switcher formId={formId} formName={formName} />
+              <FormSwitcher formId={formId} formName={formName} />
             </WrapItem>
           ))}
         </Wrap>
