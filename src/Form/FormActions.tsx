@@ -1,4 +1,4 @@
-import { Box, Code } from "@chakra-ui/react";
+import { Code } from "@chakra-ui/react";
 import { useFormState } from "./useFormState";
 
 export const FormActions: React.FC = () => {

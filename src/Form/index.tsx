@@ -4,7 +4,6 @@ import {
   Flex,
   Heading,
   Select,
-  SimpleGrid,
   Wrap,
   WrapItem,
 } from "@chakra-ui/react";
