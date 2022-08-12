@@ -1,15 +1,14 @@
 import { Checkbox, Heading } from "@chakra-ui/react";
-import { useState } from "react";
 import { Card } from "../../ui/Card";
+import { useCheckboxFormState } from "./useCheckboxFormState";
 
 type Props = {
   formId: number;
 };
 
 export const CheckboxForm: React.FC<Props> = ({ formId }) => {
-  const [checked1, setChecked1] = useState(false);
-  const [checked2, setChecked2] = useState(false);
-  const [checked3, setChecked3] = useState(false);
+  const { changeValue, checked1, checked2, checked3 } =
+    useCheckboxFormState(formId);
 
   return (
     <Card>
@@ -24,7 +23,7 @@ export const CheckboxForm: React.FC<Props> = ({ formId }) => {
       </Heading>
       <Checkbox
         onClick={() => {
-          setChecked1(!checked1);
+          changeValue(1, !checked1);
         }}
         defaultChecked={checked1}
       >
@@ -32,7 +31,7 @@ export const CheckboxForm: React.FC<Props> = ({ formId }) => {
       </Checkbox>
       <Checkbox
         onClick={() => {
-          setChecked2(!checked2);
+          changeValue(2, !checked1);
         }}
         defaultChecked={checked2}
       >
@@ -40,7 +39,7 @@ export const CheckboxForm: React.FC<Props> = ({ formId }) => {
       </Checkbox>
       <Checkbox
         onClick={() => {
-          setChecked3(!checked3);
+          changeValue(3, !checked1);
         }}
         defaultChecked={checked3}
       >

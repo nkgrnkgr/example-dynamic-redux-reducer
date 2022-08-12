@@ -1,5 +1,5 @@
-import { createSlice, PayloadAction, TaskAbortError } from "@reduxjs/toolkit";
-import { FormSchema, FormName } from "./types";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { FormName, FormSchema } from "./types";
 
 type State = {
   formSchemas: FormSchema[];
@@ -7,12 +7,7 @@ type State = {
 };
 
 const initialState: State = {
-  formSchemas: [
-    {
-      formId: 1,
-      formName: "text",
-    },
-  ],
+  formSchemas: [],
   selectedFormName: "text",
 };
 
@@ -20,15 +15,14 @@ export const { actions, reducer } = createSlice({
   name: "form",
   initialState,
   reducers: {
-    addForm(state) {
-      const { formId } = state.formSchemas.sort((a, b) => a.formId - b.formId)[
-        state.formSchemas.length - 1
-      ];
+    addForm(state, action: PayloadAction<{ formId: number }>) {
+      const { formId } = action.payload;
       state.formSchemas.push({
-        formId: formId + 1,
+        formId,
         formName: state.selectedFormName,
       });
     },
+
     selectFormName(state, action: PayloadAction<FormName>) {
       state.selectedFormName = action.payload;
     },

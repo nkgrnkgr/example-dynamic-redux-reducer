@@ -1,12 +1,13 @@
 import { Heading, Input } from "@chakra-ui/react";
-import { useState } from "react";
 import { Card } from "../../ui/Card";
+import { useInputTextFormState } from "./useInputTextFormState";
 type Props = {
   formId: number;
 };
 
 export const InputTextForm: React.FC<Props> = ({ formId }) => {
-  const [value, setValue] = useState("");
+  const { inputValue, changeValue } = useInputTextFormState(formId);
+
   return (
     <Card>
       <Heading
@@ -20,8 +21,8 @@ export const InputTextForm: React.FC<Props> = ({ formId }) => {
       </Heading>
       <Input
         placeholder="input text..."
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
+        value={inputValue}
+        onChange={(e) => changeValue(e.target.value)}
       />
     </Card>
   );
