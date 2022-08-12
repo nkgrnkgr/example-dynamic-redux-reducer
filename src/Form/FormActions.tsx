@@ -1,11 +1,9 @@
-import { Box, Button, Code, Container } from "@chakra-ui/react";
-
-const json = {
-  a: "hoge",
-  b: "fuga",
-};
+import { Box, Button, Code } from "@chakra-ui/react";
+import { useFormState } from "./useFormState";
 
 export const FormActions: React.FC = () => {
+  const { formValues } = useFormState();
+
   const onClick = () => {
     // サーバーへの送信
   };
@@ -23,7 +21,7 @@ export const FormActions: React.FC = () => {
         </Button>
       </Box>
       <Box>
-        <Code>{JSON.stringify(json, null, 2)}</Code>
+        <Code>{JSON.stringify(formValues, null, 2)}</Code>
       </Box>
     </>
   );

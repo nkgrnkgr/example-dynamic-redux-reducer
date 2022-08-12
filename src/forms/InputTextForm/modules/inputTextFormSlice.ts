@@ -1,6 +1,6 @@
 import { createEntityAdapter, createSlice } from "@reduxjs/toolkit";
 
-type InputTextForm = {
+export type InputTextForm = {
   formId: number;
   inputValue: string;
 };
