@@ -1,6 +1,6 @@
 import { createEntityAdapter, createSlice } from "@reduxjs/toolkit";
 
-type CheckboxForm = {
+export type CheckboxForm = {
   formId: number;
   checked1: boolean;
   checked2: boolean;

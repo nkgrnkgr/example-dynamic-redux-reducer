@@ -21,28 +21,13 @@ export const CheckboxForm: React.FC<Props> = ({ formId }) => {
       >
         FormId: {formId}
       </Heading>
-      <Checkbox
-        onClick={() => {
-          changeValue(1, !checked1);
-        }}
-        defaultChecked={checked1}
-      >
+      <Checkbox checked={checked1} onChange={() => changeValue(1, !checked1)}>
         Checkbox 1
       </Checkbox>
-      <Checkbox
-        onClick={() => {
-          changeValue(2, !checked1);
-        }}
-        defaultChecked={checked2}
-      >
+      <Checkbox checked={checked2} onChange={() => changeValue(2, !checked2)}>
         Checkbox 2
       </Checkbox>
-      <Checkbox
-        onClick={() => {
-          changeValue(3, !checked1);
-        }}
-        defaultChecked={checked3}
-      >
+      <Checkbox checked={checked3} onChange={() => changeValue(3, !checked3)}>
         Checkbox 3
       </Checkbox>
     </Card>
