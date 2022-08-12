@@ -1,4 +1,5 @@
-import { Box, Heading } from "@chakra-ui/react";
+import { Heading } from "@chakra-ui/react";
+import { Card } from "./Card";
 import { InputText } from "./forms/InputText";
 
 type Props = {
@@ -7,7 +8,7 @@ type Props = {
 
 export const Form: React.FC<Props> = ({ formId }) => {
   return (
-    <Box>
+    <Card>
       <Heading
         sx={{
           mb: "6px",
@@ -18,6 +19,6 @@ export const Form: React.FC<Props> = ({ formId }) => {
         FormId: {formId}
       </Heading>
       <InputText />
-    </Box>
+    </Card>
   );
 };

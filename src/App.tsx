@@ -8,6 +8,7 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { Form } from "./Form";
+import { FormActions } from "./FormActions";
 
 export const App: React.FC = () => {
   const [formIds, setFormIds] = useState([1]);
@@ -33,18 +34,31 @@ export const App: React.FC = () => {
           mb: "12px",
         }}
       >
+        <FormActions />
+      </Box>
+
+      <Box
+        sx={{
+          mb: "12px",
+        }}
+      >
+        <Wrap spacing="12px">
+          {formIds.map((formId) => (
+            <WrapItem w="240px" key={formId}>
+              <Form formId={`${formId}`} />
+            </WrapItem>
+          ))}
+        </Wrap>
+      </Box>
+      <Box
+        sx={{
+          mb: "12px",
+        }}
+      >
         <Button colorScheme="cyan" onClick={increment}>
           Add Form
         </Button>
       </Box>
-
-      <Wrap spacing="12px">
-        {formIds.map((formId) => (
-          <WrapItem w="240px" key={formId}>
-            <Form formId={`${formId}`} />
-          </WrapItem>
-        ))}
-      </Wrap>
     </Container>
   );
 };
