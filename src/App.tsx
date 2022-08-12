@@ -1,7 +1,5 @@
 import { Box } from "@chakra-ui/react";
 
-function App() {
+export const App: React.FC = () => {
   return <Box>Chakra App</Box>;
-}
-
-export default App;
+};
