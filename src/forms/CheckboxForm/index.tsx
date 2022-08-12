@@ -1,6 +1,6 @@
 import { Checkbox, Heading } from "@chakra-ui/react";
 import { useState } from "react";
-import { Card } from "../Card";
+import { Card } from "../../ui/Card";
 
 type Props = {
   formId: number;
