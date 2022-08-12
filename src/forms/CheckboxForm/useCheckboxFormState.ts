@@ -17,7 +17,7 @@ export const useCheckboxFormState = (formId: number) => {
       actions.update({
         id: formId,
         changes: {
-          [`checkbox${checkboxNumber}`]: value,
+          [`checked${checkboxNumber}`]: value,
         },
       })
     );

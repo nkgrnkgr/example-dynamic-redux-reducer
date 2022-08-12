@@ -49,13 +49,17 @@ export const Form: React.FC = () => {
         }}
       >
         <Flex>
-          <Select
-            defaultValue={selectedFormName}
-            onChange={(e) => selectFormName(e.currentTarget.value as FormName)}
-          >
-            <option value="text">text</option>
-            <option value="checkbox">checkbox</option>
-          </Select>
+          <Box sx={{ w: "100%", mr: "12px" }}>
+            <Select
+              defaultValue={selectedFormName}
+              onChange={(e) =>
+                selectFormName(e.currentTarget.value as FormName)
+              }
+            >
+              <option value="text">text</option>
+              <option value="checkbox">checkbox</option>
+            </Select>
+          </Box>
           <Button colorScheme="cyan" onClick={addForm}>
             Add Form
           </Button>
