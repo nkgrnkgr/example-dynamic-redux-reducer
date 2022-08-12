@@ -40,7 +40,7 @@ export const CheckboxForm: React.FC<Props> = ({ formId }) => {
       </Checkbox>
       <Checkbox
         onClick={() => {
-          setChecked1(!checked3);
+          setChecked3(!checked3);
         }}
         defaultChecked={checked3}
       >
